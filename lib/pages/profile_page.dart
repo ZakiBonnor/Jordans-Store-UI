@@ -98,7 +98,9 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: (){},
+        floatingActionButton: FloatingActionButton(onPressed: (){
+          return print('CLICKED');
+        },
         child: Icon(Icons.check)),
       ),
     );
