@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jordans_store_ui/pages/cart_page.dart';
 import 'package:jordans_store_ui/pages/home_page.dart';
 import 'package:jordans_store_ui/pages/profile_page.dart';
 
@@ -7,8 +8,9 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
-      '/':(context) => HomePage(),
-      '/profile':(context) => ProfilePage(),
+      '/': (context) => MyApp(),
+      '/profile': (context) => ProfilePage(),
+      '/cart': (context) => CartPage(),
     },
   ));
 }
@@ -23,44 +25,46 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  var questions = [
-    'Whats is your name?',
-    'How old are you?',
+  int _selectedIndex = 0;
+  List<Widget> pages = [
+    HomePage(),
+    CartPage(),
+    ProfilePage(),
+
   ];
-  var questionIndex = 0;
-  void answeredQuestion() {
-    setState(() {
-      questionIndex = questionIndex + 1;
-    });
-    print(questionIndex);
-    print('answer chosen');
+
+  void ontap(int index) {
+    setState(() => {_selectedIndex = index});
   }
 
+  @override
   Widget build(BuildContext context) {
-
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Naruto"),
+    return Scaffold(
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: [...pages],
         ),
-        body: Column(
-          children: [
-            Text(questions[questionIndex]),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: () => answeredQuestion(),
-            ),
-            RaisedButton(
-              child: Text('Answer 2'),
-              onPressed: answeredQuestion,
-            ),
-            RaisedButton(
-              child: Text('Answer 3'),
-              onPressed: answeredQuestion,
-            ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: ontap,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.deepOrange[600]),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart),
+                label: 'Cart',
+                backgroundColor: Colors.deepOrange[600]),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Account',
+                backgroundColor: Colors.deepOrange[600]),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
+                backgroundColor: Colors.deepOrange[600]),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
