@@ -10,13 +10,10 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: Text('Profile'),
-          backgroundColor: Colors.white,
-          centerTitle: true,
           titleTextStyle: TextStyle(
-              color: Colors.black54,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1),
+              fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 2),
+          centerTitle: true,
+          backgroundColor: Colors.black87,
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(30, 0, 30, 20),
@@ -32,8 +29,10 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       CircleAvatar(
+                        backgroundColor: Colors.black87,
                         child: Icon(
                           Icons.person,
+                          color: Colors.white,
                           size: 45,
                         ),
                         radius: 45,
@@ -98,10 +97,6 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: (){
-          return print('CLICKED');
-        },
-        child: Icon(Icons.check)),
       ),
     );
   }

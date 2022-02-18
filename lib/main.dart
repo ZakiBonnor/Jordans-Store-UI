@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jordans_store_ui/pages/cart_page.dart';
 import 'package:jordans_store_ui/pages/home_page.dart';
 import 'package:jordans_store_ui/pages/profile_page.dart';
+import 'package:jordans_store_ui/pages/search_page.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -28,6 +29,7 @@ class MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
   List<Widget> pages = [
     HomePage(),
+    SearchPage(),
     CartPage(),
     ProfilePage(),
 
@@ -48,22 +50,23 @@ class MyAppState extends State<MyApp> {
           currentIndex: _selectedIndex,
           onTap: ontap,
           items: [
+
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: 'Home',
-                backgroundColor: Colors.deepOrange[600]),
+                backgroundColor: Colors.black87),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+                backgroundColor: Colors.black87),
             BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart),
                 label: 'Cart',
-                backgroundColor: Colors.deepOrange[600]),
+                backgroundColor: Colors.black87),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person),
                 label: 'Account',
-                backgroundColor: Colors.deepOrange[600]),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'Settings',
-                backgroundColor: Colors.deepOrange[600]),
+                backgroundColor: Colors.black87),
           ],
         ));
   }

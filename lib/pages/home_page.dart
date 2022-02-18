@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jordans_store_ui/pages/cart_page.dart';
-import 'package:jordans_store_ui/pages/profile_page.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -18,7 +15,7 @@ class _HomePageState extends State<HomePage> {
         titleTextStyle: TextStyle(
             fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 2),
         centerTitle: true,
-        backgroundColor: Colors.deepOrange[600],
+        backgroundColor: Colors.black87,
       ),
       body: GridView.count(
         crossAxisCount: 2,
