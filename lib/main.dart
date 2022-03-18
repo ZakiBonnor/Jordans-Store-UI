@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jordans_store_ui/pages/cart_page.dart';
 import 'package:jordans_store_ui/pages/home_page.dart';
+import 'package:jordans_store_ui/pages/items_details_page.dart';
 import 'package:jordans_store_ui/pages/profile_page.dart';
 import 'package:jordans_store_ui/pages/search_page.dart';
 
@@ -12,6 +13,7 @@ void main() {
       '/': (context) => MyApp(),
       '/profile': (context) => ProfilePage(),
       '/cart': (context) => CartPage(),
+      '/details': (context) => ItemsDetailsPage(),
     },
   ));
 }

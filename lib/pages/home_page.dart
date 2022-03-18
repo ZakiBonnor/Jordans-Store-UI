@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,27 +41,33 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Card customCard(Shoe shoe) {
-    return Card(
-      semanticContainer: true,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Image(image: NetworkImage(shoe.imageUrl), fit: BoxFit.fill),
-            ),
-            SizedBox(height: 10),
-            Text(shoe.name,
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
-            SizedBox(height: 5),
-            Text(
-              shoe.price,
-              style: TextStyle(fontSize: 15, color: Colors.grey[600]),
-            )
-          ],
+  GestureDetector customCard(Shoe shoe) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/details');
+      },
+      child: Card(
+        semanticContainer: true,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child:
+                    Image(image: NetworkImage(shoe.imageUrl), fit: BoxFit.fill),
+              ),
+              SizedBox(height: 10),
+              Text(shoe.name,
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+              SizedBox(height: 5),
+              Text(
+                shoe.price,
+                style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -17,15 +17,21 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: FlatButton(child: Icon(Icons.add), onPressed: () => {}),
+        backgroundColor: Colors.black,
+        leading: FlatButton(child: Icon(Icons.arrow_back,color: Colors.white), onPressed: () => {
+          Navigator.pushNamed(context, '/')
+        }),
+        title: Text('Search Page',style: TextStyle(fontSize: 30,letterSpacing: 1.5)),
+        centerTitle: true,
         elevation: 0,
         actions: [
           IconButton(
-              onPressed: () {
-                showSearch(context: context, delegate: CustomSearchDelegate());
-              },
-              icon: Icon(Icons.search),color: Colors.black,)
+            onPressed: () {
+              showSearch(context: context, delegate: CustomSearchDelegate());
+            },
+            icon: Icon(Icons.search),
+            color: Colors.white,
+          )
         ],
       ),
       backgroundColor: Colors.white,
@@ -116,8 +122,10 @@ class CustomSearchDelegate extends SearchDelegate {
             leading: Container(
                 width: 100,
                 height: 100,
-                child: Image(image: NetworkImage(result.imageUrl), fit: BoxFit.cover)),
+                child: Image(
+                    image: NetworkImage(result.imageUrl), fit: BoxFit.cover)),
             title: Text(result.name),
-          );});
+          );
+        });
   }
 }

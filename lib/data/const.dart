@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:jordans_store_ui/models/shoe.dart';
 
 List<Shoe> shoesList = [
@@ -49,4 +51,10 @@ List<Shoe> shoesList = [
       'Air Jordan 6 Whitey Purp',
       'https://i.pinimg.com/564x/87/fd/fb/87fdfb80a8d125c58c15026cf517465f.jpg',
       '260 Dollars'),
+];
+List <Color> colorsList =[
+  Colors.red,
+  Colors.black,
+  Colors.white,
+  Colors.blue,
 ];

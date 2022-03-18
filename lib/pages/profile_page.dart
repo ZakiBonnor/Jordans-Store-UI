@@ -9,6 +9,9 @@ class ProfilePage extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
+          leading: FlatButton(child: Icon(Icons.arrow_back,color: Colors.white), onPressed: () => {
+            Navigator.pushNamed(context, '/')
+          }),
           title: Text('Profile'),
           titleTextStyle: TextStyle(
               fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 2),
