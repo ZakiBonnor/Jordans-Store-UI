@@ -5,7 +5,7 @@
 
 My first mobile app using flutter, this is a UI kit for a shoes store specialised in selling Nike's shoes.
 
-## Screenshot:
+## Screenshots:
 <img src="Screenshots/Screenshot_1648736379.png" width ="250"/> <img src="Screenshots/Screenshot_1648734824.png" width ="250"/> 
 <img src="Screenshots/Screenshot_1648734835.png" width ="250"/> <img src="Screenshots/Screenshot_1648734838.png" width ="250"/> 
 <img src="Screenshots/Screenshot_1648734842.png" width ="250"/> <img src="Screenshots/Screenshot_1648734847.png" width ="250"/>
