@@ -104,7 +104,7 @@ class _ItemsDetailsPageState extends State<ItemsDetailsPage> {
               const Text('Description',
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
               const Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo co',
+                'This shoe is really cool you should definitely buy it <3',
                 style: TextStyle(fontSize: 20),
               ),
               SizedBox(height: 20),
