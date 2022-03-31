@@ -1,16 +1,43 @@
-# jordans_store_ui
+# Shop Manager Flutter
 
-A new Flutter project.
+![GitHub license](https://img.shields.io/github/license/ZakiBonnor/Jordans-Store-UI.svg)
+![Jetlight studio](https://img.shields.io/badge/Made%20by-Jetlight%20studio-blue.svg?color=082544)
 
-## Getting Started
+My first mobile app using flutter, this is a UI kit for a shoes store specialised in selling Nike's shoes.
 
-This project is a starting point for a Flutter application.
+## Screenshot:
+<img src="Screenshots/Screenshot_1648736379.png" width ="250"/> <img src="Screenshots/Screenshot_1648734824.png" width ="250"/> 
+<img src="Screenshots/Screenshot_1648734835.png" width ="250"/> <img src="Screenshots/Screenshot_1648734838.png" width ="250"/> 
+<img src="Screenshots/Screenshot_1648734842.png" width ="250"/> <img src="Screenshots/Screenshot_1648734847.png" width ="250"/>
+<img src="Screenshots/Screenshot_1648734853.png" width ="250"/> <img src="Screenshots/Screenshot_1648734856.png" width ="250"/>
 
-A few resources to get you started if this is your first Flutter project:
+## Features:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+* You can search for items by name.
+* The cart adds up the prices for the items added to it.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tools used:
+* Android Studio (IDE)
+* Dart (logic)
+* Flutter (Mobile UI developement kit).
+* Illustrator (Image editting)
+
+## Documentation
+
+Flutter is Google's SDK for crafting beautiful, fast user experiences for
+mobile, web and desktop from a single codebase. Flutter works with existing
+code, is used by developers and organizations around the world, and is free
+and open source.
+
+* [Install Flutter](https://flutter.dev/get-started/)
+* [Flutter documentation](https://flutter.dev/docs)
+
+For announcements about new releases and breaking changes, follow the
+[flutter-announce@googlegroups.com](https://groups.google.com/forum/#!forum/flutter-announce)
+mailing list.
+
+## Contribution:
+Feel free to `fork` this project and add whatever you like. If you have any suggestions or any comments please feel free to contact me or to open an issue, use free license art assets please.
+
+## Team:
+[Jetlighters](https://github.com/JetLightStudio) having fun.
