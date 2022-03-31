@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:jordans_store_ui/data/const.dart';
 import 'package:jordans_store_ui/models/shoe.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
 
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,47 +23,78 @@ class CartPage extends StatelessWidget {
                 letterSpacing: 2)),
         centerTitle: true,
         backgroundColor: Colors.black,
-        leading: FlatButton(
-            child: Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => {Navigator.pushNamed(context, '/')}),
         elevation: 0,
+        actions: [
+          FlatButton(
+              onPressed: () {
+                setState(() {});
+              },
+              child: Icon(Icons.refresh_rounded, color: Colors.white))
+        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListView(
-              shrinkWrap: true,
+      body: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
               children: [
-                customCard(
-                  shoesList[0],
-                ),
-                SizedBox(height: 15),
-                customCard(
-                  shoesList[1],
-                ),
-                SizedBox(height: 15),
-                customCard(
-                  shoesList[2],
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: shoppingCart.length,
+                            itemBuilder: (context, index) {
+                              return customCard(shoppingCart[index]);
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FlatButton(
-                  child: Text('Back to Item search',
-                      style: TextStyle(fontSize: 18)),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+          Column(
+            children: [
+              Divider(
+                height: 4,
+                thickness: 5,
+                color: Colors.black,
+                indent: 2,
+                endIndent: 2,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Total Price',
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      Text('${totalShoppingPrice()}\$',style: TextStyle(fontSize: 20),),
+                    ]),
+              ),
+              SizedBox(height: 20)
+            ],
+          )],
       ),
     );
+  }
+
+  int totalShoppingPrice(){
+    int temp=0;
+    for (int i=0;i<shoppingCart.length; i++){
+      temp= temp + shoppingCart[i].price;
+    }
+    return temp;
   }
 
   Card customCard(Shoe shoe) {
@@ -69,7 +105,7 @@ class CartPage extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Image(image: NetworkImage(shoe.imageUrl), fit: BoxFit.fill),
           ),
           Expanded(
@@ -80,12 +116,10 @@ class CartPage extends StatelessWidget {
                   style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
             ),
           ),
-          FlatButton(
-            onPressed: () {
-              print(Text('Item Added Successfully'));
-            },
-            child: Icon(Icons.add),
-          )
+          Expanded(
+            flex: 1,
+            child: Text('${shoe.price}\$'),
+          ),
         ],
       ),
     );

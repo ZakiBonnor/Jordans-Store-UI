@@ -1,7 +1,6 @@
 class Shoe {
- late String name;
- late String imageUrl;
- late String price;
+ late String name, imageUrl;
+ late int price;
 
  Shoe(this.name,this.imageUrl,this.price);
 

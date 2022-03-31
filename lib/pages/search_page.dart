@@ -18,10 +18,8 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: FlatButton(child: Icon(Icons.arrow_back,color: Colors.white), onPressed: () => {
-          Navigator.pushNamed(context, '/')
-        }),
-        title: Text('Search Page',style: TextStyle(fontSize: 30,letterSpacing: 1.5)),
+        title: Text('Search Page',
+            style: TextStyle(fontSize: 30, letterSpacing: 1.5)),
         centerTitle: true,
         elevation: 0,
         actions: [
@@ -35,27 +33,29 @@ class _SearchPageState extends State<SearchPage> {
         ],
       ),
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Center(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(0, 100, 0, 10),
-              child: Center(
-                  child: SvgPicture.asset('assets/images/search1.svg',
-                      width: 100)),
-            ),
-          ),
-          Center(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
               child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 150, 0, 20),
-            child: Text('Search Items',
-                style: TextStyle(
-                    fontSize: 36, color: Colors.black, letterSpacing: 1)),
-          )),
-          Center(
-              child: Text('Find Items That Suits Your Liking!',
-                  style: TextStyle(fontSize: 18, color: Colors.black))),
-        ],
+                padding: EdgeInsets.fromLTRB(0, 100, 0, 10),
+                child: Center(
+                    child: SvgPicture.asset('assets/images/search1.svg',
+                        width: 100)),
+              ),
+            ),
+            Center(
+                child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 150, 0, 20),
+              child: Text('Search Items',
+                  style: TextStyle(
+                      fontSize: 36, color: Colors.black, letterSpacing: 1)),
+            )),
+            Center(
+                child: Text('Find Items That Suits Your Liking!',
+                    style: TextStyle(fontSize: 18, color: Colors.black))),
+          ],
+        ),
       ),
     );
   }
@@ -101,7 +101,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 height: 100,
                 child: Image(image: NetworkImage(result.imageUrl))),
             title: Text(result.name),
-            trailing: Text(result.price),
+            trailing: Text('${result.price}\$'),
           );
         });
   }
@@ -119,6 +119,9 @@ class CustomSearchDelegate extends SearchDelegate {
         itemBuilder: (context, index) {
           var result = matchQuery[index];
           return ListTile(
+            onTap: () {
+              Navigator.of(context).pushNamed('/details', arguments: [result]);
+            },
             leading: Container(
                 width: 100,
                 height: 100,

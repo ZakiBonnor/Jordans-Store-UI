@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text('Jordans Store'),
         titleTextStyle: TextStyle(
             fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 2),
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   GestureDetector customCard(Shoe shoe) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/details');
+        Navigator.of(context).pushNamed('/details',arguments: [shoe]);
       },
       child: Card(
         semanticContainer: true,
@@ -63,8 +64,8 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
               SizedBox(height: 5),
               Text(
-                shoe.price,
-                style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                '${shoe.price}\$',
+                style: TextStyle(fontSize: 19, color: Colors.black),
               ),
             ],
           ),
@@ -73,3 +74,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+

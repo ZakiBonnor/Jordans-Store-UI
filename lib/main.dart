@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:jordans_store_ui/pages/cart_page.dart';
 import 'package:jordans_store_ui/pages/home_page.dart';
 import 'package:jordans_store_ui/pages/items_details_page.dart';
+import 'package:jordans_store_ui/pages/loading_page.dart';
 import 'package:jordans_store_ui/pages/profile_page.dart';
 import 'package:jordans_store_ui/pages/search_page.dart';
+
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
-      '/': (context) => MyApp(),
+      '/': (context) => Loading(),
+      '/home': (context) => MyApp(),
       '/profile': (context) => ProfilePage(),
-      '/cart': (context) => CartPage(),
+      '/Cart': (context) => CartPage(),
       '/details': (context) => ItemsDetailsPage(),
     },
   ));
@@ -71,5 +74,6 @@ class MyAppState extends State<MyApp> {
                 backgroundColor: Colors.black87),
           ],
         ));
+
   }
 }

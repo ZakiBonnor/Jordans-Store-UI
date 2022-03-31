@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:jordans_store_ui/data/const.dart';
+import 'package:jordans_store_ui/models/shoe.dart';
 
 class ItemsDetailsPage extends StatefulWidget {
   const ItemsDetailsPage({Key? key}) : super(key: key);
@@ -12,6 +13,9 @@ class ItemsDetailsPage extends StatefulWidget {
 class _ItemsDetailsPageState extends State<ItemsDetailsPage> {
   @override
   Widget build(BuildContext context) {
+    List<Shoe> currentShoe =
+        ModalRoute.of(context)!.settings.arguments as List<Shoe>;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Details'),
@@ -20,148 +24,147 @@ class _ItemsDetailsPageState extends State<ItemsDetailsPage> {
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                child: Text('AIR JORDAN 3',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold)),
-              ),
-            ),
-            Image.network(
-                'https://cdn.dribbble.com/users/1298822/screenshots/4205563/media/dc70c7f7ebd60b285d5b1faea538072e.png?compress=1&resize=800x600&vertical=top'),
-            const Text('Colors',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold)),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: customCard(colorsList[0]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: customCard(colorsList[1]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: customCard(colorsList[2]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: customCard(colorsList[3]),
-                ),
-              ],
-            ),
-            const Text('Size',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-            Row(
-              children: [
-                OutlinedButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.black),
-                  ),
-                  onPressed: () {},
-                  child: const Text('41',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                ),
-                OutlinedButton(
-                  onPressed: () {},
-                  child: const Text('42',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  child: Text(currentShoe[0].name,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.black)),
+                          color: Colors.black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold)),
                 ),
-                OutlinedButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.black),
-                  ),
-                  onPressed: () {},
-                  child: const Text('43',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                ),
-                OutlinedButton(
-                  style: ButtonStyle(
-                    foregroundColor:
-                        MaterialStateProperty.all<Color>(Colors.black),
-                  ),
-                  onPressed: () {},
-                  child: const Text('44',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              Center(
+                child: Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Image.network(currentShoe[0].imageUrl)),
+              ),
+              const Text('Colors',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text('Description',
-                      style:
-                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Container(
-                      margin: const EdgeInsets.all(12.0),
-                      padding: const EdgeInsets.all(3.0),
-                      child: const Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo co',
-                        style: TextStyle(fontSize: 20),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: colorCard(colorsList[0]),
                       ),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: 5),
-                        borderRadius: BorderRadius.circular(15),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: colorCard(colorsList[1]),
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: colorCard(colorsList[2]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: colorCard(colorsList[3]),
+                      ),
+                    ],
                   ),
-                  Center(
-                    child: SizedBox(
-                      width: 150,
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.black),
-                        ),
-                        onPressed: () {},
-                        child: const Text('Add To Cart',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white)),
-                      ),
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text('${currentShoe[0].price}\$',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 3.5),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+              SizedBox(height: 15),
+              const Text('Size',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+              Row(
+                children: [
+                  sizeCard(41),
+                  sizeCard(42),
+                  sizeCard(43),
+                  sizeCard(44),
+                  sizeCard(45),
+                ],
+              ),
+              SizedBox(height: 15),
+              const Text('Description',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+              const Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo co',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(height: 20),
+              Center(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.black),
+                  ),
+                  onPressed: () {
+                    shoppingCart.add(currentShoe[0]);
+
+                    final snackBar = SnackBar(
+                      content: const Text('Item Added Successfully!'),
+                      action: SnackBarAction(
+                        label: 'Go To Cart',
+                        textColor: Colors.white,
+                        onPressed: () {
+                          Navigator.popAndPushNamed(context, '/Cart');
+                        },
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text('Add To Cart',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
+                  ),
+                ),
+              ),
+              SizedBox(height: 60),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  OutlinedButton customCard(Color shoeColor) {
+  OutlinedButton colorCard(Color shoeColor) {
     return OutlinedButton(
       onPressed: () {},
-      child: const SizedBox(),
+      child: SizedBox(),
       style: ButtonStyle(backgroundColor: MaterialStateProperty.all(shoeColor)),
+    );
+  }
+
+  Padding sizeCard(int shoeSize) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: OutlinedButton(
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+        ),
+        onPressed: () {},
+        child: Text(shoeSize.toString(),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+      ),
     );
   }
 }
